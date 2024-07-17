@@ -1,0 +1,82 @@
+<app-header titulo="Articulos"></app-header>
+
+<ion-content [fullscreen]="true">
+  <h3 class="encabezado">Crear un articulo nuevo.</h3>
+
+  <ion-item>
+    <ion-label position="floating">
+      Titulo:
+    </ion-label>
+    <ion-input [(ngModel)]="newArticulo.tituloDeArticulo" type="text" inputmode="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Categoría:</ion-label>
+    <ion-select [(ngModel)]="newArticulo.categoria" placeholder="Selecciona una categoría">
+      <ion-select-option value="ciencias">Ciencias</ion-select-option>
+      <ion-select-option value="deporte">Deporte</ion-select-option>
+      <ion-select-option value="tecnologia">Tecnología</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">
+      Resumen del articulo:
+    </ion-label>
+    <ion-input [(ngModel)]="newArticulo.resumenDelArticulo" type="text" inputmode="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">
+    </ion-label>
+    <ion-input [(ngModel)]="newArticulo.fechaPublicacion" type="date" inputmode="date" class="custom-date-input"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">
+      Autor:
+    </ion-label>
+    <ion-input [(ngModel)]="newArticulo.autor" type="text" inputmode="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">
+      Información: 
+    </ion-label>
+    <ion-input [(ngModel)]="newArticulo.informacion" type="text" inputmode="text"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>
+      Agregar imágenes:
+    </ion-label>
+    <ion-button fill="clear" slot="end">
+      <ion-icon name="image-outline" class="iconoImagen"></ion-icon>
+    </ion-button>
+  </ion-item>
+
+  <div class="button-container">
+    <ion-button class="BotonGuardar" (click)="guardarArticulo()">Guardar</ion-button>
+    <ion-button class="BotonGuardar" (click)="limpiarCampos()">Limpiar</ion-button>
+  </div>
+
+  <ion-item *ngFor="let articulo of articulos">
+
+    <ion-label>
+      <h2>Titulo: {{articulo.tituloDeArticulo}}</h2>
+    <p>Genero: {{articulo.categoria}}</p>
+    </ion-label>
+
+    <ion-buttons slot="end">
+      <!--actualizar un articulo-->
+      <ion-button (click)="newArticulo = articulo">
+        <ion-icon slot="icon-only" name="create-sharp" ></ion-icon>
+      </ion-button>
+      <!--eliminar un articulo-->
+      <ion-button (click)="eliminarArticulo(articulo)">
+        <ion-icon slot="icon-only" name="trash-bin" color="danger"></ion-icon>
+      </ion-button>
+      
+    </ion-buttons>
+
+  </ion-item>
+</ion-content>
