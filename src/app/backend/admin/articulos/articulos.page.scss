@@ -1,0 +1,41 @@
+.encabezado {
+    background: #e9ecef;
+    border-radius: 30px;
+    margin: 10px;
+    text-align: center;
+    padding: 5px;
+    color: black;
+}
+  
+  ion-item {
+    margin-bottom: 15px;
+    --background: transparent;
+    --border-radius: 30px;
+  }
+  
+  ion-label {
+    color: white;
+  }
+  
+  ion-input {
+    color: white;
+  }
+
+  .custom-image-button {
+    --padding-start: 0;
+    --padding-end: 0;
+  }
+  
+  .iconoImagen {
+    font-size: 2em;
+  }
+  .BotonGuardar {
+    width: 150px;    
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }

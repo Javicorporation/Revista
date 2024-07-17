@@ -7,6 +7,7 @@ import { Articulo } from '../modelsDatabase';
   providedIn: 'root'
 })
 export class FirestoreService {
+  
   private articuloSource = new BehaviorSubject<Articulo | null>(null);
   currentArticulo = this.articuloSource.asObservable();
 
@@ -40,19 +41,17 @@ export class FirestoreService {
   }
 
 
-  obtenerLaColeccionXD(path: string){
-    const coleccion = this.database.collection(path);
-    return coleccion.valueChanges();
-  }
-
-}
   obtenerLaColeccionXD<Tipo>(path: string){
     const coleccion = this.database.collection<Tipo>(path);
     return coleccion.valueChanges();
   }
+  
 
   changeArticulo(articulo: Articulo) {
     this.articuloSource.next(articulo);
   }
+
 }
+  
+
 

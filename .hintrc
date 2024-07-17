@@ -9,7 +9,8 @@
       "default",
       {
         "ignore": [
-          "meta[name=color-scheme]"
+          "meta[name=color-scheme]",
+          "ion-input[inputmode]"
         ]
       }
     ]

@@ -1,13 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>homeadmin</ion-title>
+    <ion-title>Home Admin</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()">
+        <ion-icon slot="icon-only" name="menu-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">homeadmin</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <h3 class="encabezado">Articulos existentes</h3>
+  <ion-list>
+    <ion-item *ngFor="let articulo of articulos">
+      <ion-label>
+        <h2>Titulo: {{articulo.tituloDeArticulo}}</h2>
+        <p>Genero: {{articulo.categoria}}</p>
+      </ion-label>
+      <ion-buttons slot="end" >
+      <!--actualizar un articulo, al momento de presionarlo debe redirigir a la pagina articulo y rellenar con los datos del articulo seleccionado-->
+      <ion-button (click)="actualizarArticulo(articulo)">
+        <ion-icon slot="icon-only" name="create-sharp"></ion-icon>
+      </ion-button>
+      <!--eliminar un articulo-->
+      <ion-button (click)="eliminarProducto(articulo)">
+        <ion-icon slot="icon-only" name="trash-bin" color="danger"></ion-icon>
+      </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>  
 </ion-content>
