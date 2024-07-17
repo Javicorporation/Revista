@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InicioPage implements OnInit {
 
+  tituloApp: string = 'REVISTA ECUADOR';
+  subtituloApp: string = 'Bienvenido a tu fuente de noticias, cultura y entretenimiento.';
+
   constructor() { }
 
   ngOnInit() {
