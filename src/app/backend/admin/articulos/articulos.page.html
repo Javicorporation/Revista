@@ -58,25 +58,4 @@
     <ion-button class="BotonGuardar" (click)="guardarArticulo()">Guardar</ion-button>
     <ion-button class="BotonGuardar" (click)="limpiarCampos()">Limpiar</ion-button>
   </div>
-
-  <ion-item *ngFor="let articulo of articulos">
-
-    <ion-label>
-      <h2>Titulo: {{articulo.tituloDeArticulo}}</h2>
-    <p>Genero: {{articulo.categoria}}</p>
-    </ion-label>
-
-    <ion-buttons slot="end">
-      <!--actualizar un articulo-->
-      <ion-button (click)="newArticulo = articulo">
-        <ion-icon slot="icon-only" name="create-sharp" ></ion-icon>
-      </ion-button>
-      <!--eliminar un articulo-->
-      <ion-button (click)="eliminarArticulo(articulo)">
-        <ion-icon slot="icon-only" name="trash-bin" color="danger"></ion-icon>
-      </ion-button>
-      
-    </ion-buttons>
-
-  </ion-item>
 </ion-content>
