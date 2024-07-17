@@ -1,0 +1,106 @@
+.ion-inicio{
+    --ion-background-color:linear-gradient(180.31deg, #7B72DF -11.57%, rgba(53, 59, 118, 0.967456) 51.75%, rgba(32, 48, 130, 0.729167) 111.46%, rgba(51, 106, 188, 0) 140.83%);
+}
+
+.inicio-container {
+    --ion-background-color: transparent; 
+    padding: 20px;
+    background: var(--ion-background-color);
+    box-shadow: none;
+}
+
+.img-logo {
+    width: 15vw; 
+    height: 20vh; 
+    display: block;
+    margin: 0 auto;
+    width: 105px;
+    gap: 0px;
+    opacity: 0px;
+}
+
+.name-app {
+    font-size: 7vw;
+    display: block;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    color: white; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    font-family: 'SeoulHangang CB';
+}
+
+.subtext {
+    padding: 3.5vw;
+    font-size: 4vw; 
+    display: block;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-family: 'SeoulHangang CB';
+    align-items: center;
+    margin: auto; 
+    color: white; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+}
+
+.img-culture {
+    width: 60vw; /* Adjust width for a larger image */
+    height: 60vw; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure image fills the container */
+    border-radius: 50%; /* Make the image circular */
+    margin: 20px auto; /* Add some margin for spacing */
+}
+
+.content-button{
+    padding: 15vw;
+}
+
+.login-button {
+    font-size: 4vw;  
+    font-family: 'SeoulHangang CB'; 
+    --border-radius: 50px;
+}
+
+.register-button {
+    font-size: 4vw;
+    --ion-background-color: transparent; 
+    font-family: 'SeoulHangang CB';
+    
+}
+
+@media (min-width: 1200px) {
+    .img-logo {
+        width: 8vw; 
+        height: auto; 
+        }
+
+    .name-app {
+        font-size: 2vw;
+    }
+
+    .subtext {
+        padding: 1.5vw;
+        font-size: 1.5vw; 
+    }
+
+    .img-culture {
+        width: 300px; /* Set a fixed width for computers */
+        height: 300px; /* Set a fixed height for computers */
+    }
+
+    .content-button {
+        padding: 3vw;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .login-button, .register-button {
+        font-size: 1vw;  
+        --border-radius: 15px;
+    }
+}
