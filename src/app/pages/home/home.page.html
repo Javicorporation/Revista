@@ -1,13 +1,45 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>home</ion-title>
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()">
+        <ion-icon slot="icon-only" name="menu-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">home</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card routerLink="/deporte">
+    <img alt="imagen de fondo temporar" src="/assets/img/deporte.jpg" />
+    <ion-card-header>
+      <ion-card-title>Deportes</ion-card-title>
+      <ion-card-subtitle>Artículos de la actualidad en el área de los deportes.</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      Here's a small text description for the card content. Nothing more, nothing less.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card routerLink="/ciencia">
+    <img alt="imagen de fondo temporar" src="/assets/img/ciencia.jpg" />
+    <ion-card-header>
+      <ion-card-title>Ciencia</ion-card-title>
+      <ion-card-subtitle>Artículos de la actualidad en el área de la ciencia.</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      Here's a small text description for the card content. Nothing more, nothing less.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card routerLink="/tecnologia">
+    <img alt="imagen de fondo temporar" src="/assets/img/tecno.png" />
+    <ion-card-header>
+      <ion-card-title>Tecnologia</ion-card-title>
+      <ion-card-subtitle>Artículos de la actualidad en el área de la tecnologia.</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      Here's a small text description for the card content. Nothing more, nothing less.
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
 import { TecnologiaPageRoutingModule } from './tecnologia-routing.module';
 
+import { ComponentesModule } from "../../componentes/componentes.module";
 import { TecnologiaPage } from './tecnologia.page';
 
 @NgModule({
@@ -13,8 +14,9 @@ import { TecnologiaPage } from './tecnologia.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    TecnologiaPageRoutingModule
-  ],
+    TecnologiaPageRoutingModule,
+    ComponentesModule
+],
   declarations: [TecnologiaPage]
 })
 export class TecnologiaPageModule {}
