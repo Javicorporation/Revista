@@ -1,0 +1,150 @@
+.ion-register {
+    --ion-background-color:linear-gradient(180.31deg, #7B72DF -11.57%, rgba(53, 59, 118, 0.967456) 51.75%, rgba(32, 48, 130, 0.729167) 111.46%, rgba(51, 106, 188, 0) 140.83%);
+}
+
+.register-container{
+    --ion-background-color: transparent; 
+    padding: 20px;
+    background: var(--ion-background-color);
+    box-shadow: none;
+}
+
+.header {
+    display: block;
+}
+
+.welcome-text{
+    display: block;
+    font-size: 10vw;
+    display: block;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    color: white; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    font-family: 'SeoulHangang CB';
+}
+
+.subtext{
+    display: block;
+    padding: 5.5vw;
+    font-size: 4vw; 
+    display: block;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-family: 'SeoulHangang CB';
+    align-items: center;
+    margin: auto; 
+    color: white; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.img-culture {
+    display: block;
+    width: 33vw; 
+    height: 33vw; 
+    object-fit: cover; 
+    margin: 20px auto;
+}
+
+.form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.input-item{
+    padding-bottom: 10px;
+}
+
+.email{
+    display: block;
+    border-radius: 15px;
+}
+
+.apellido{
+    display: block;
+    border-radius: 15px;
+}
+.email{
+    display: block;
+    border-radius: 15px;
+}
+
+.password{
+    display: block;
+    border-radius: 15px;
+}
+
+.error-message {
+    color: red; 
+    font-size: 12px;
+    margin-top: 5px; 
+}
+
+.terminos-Condiciones {
+    text-align: center; 
+    padding: 7px;
+    display: block;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-family: 'SeoulHangang CB';
+    align-items: center;
+    color: rgb(97, 97, 97); 
+    text-shadow: 2px 2px 4px rgba(219, 55, 55, 0.5); 
+}
+
+.register-button {
+    display: block; 
+    margin: 20px auto; 
+    padding: 10px 20px; 
+    color: #fff; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-family: 'SeoulHangang CB';
+}
+
+.register-text{
+    font-size: 14px;
+    color: #7a848f; 
+}
+
+.login-link{
+    font-size: 14px;
+    color: #007bff; 
+    cursor: pointer;
+}
+
+.footer{
+    padding-bottom: 50px;
+}
+
+@media (min-width: 1024px) {
+    .welcome-text {
+        font-size: 4vw;
+    }
+
+    .subtext {
+        padding: 1vw;
+        font-size: 1.5vw;
+    }
+
+    .img-culture {
+        width: 15vw;
+        height: 15vw;
+    }
+
+    .form {
+        max-width: 800px;
+    }
+
+    .register-button {
+        font-size: 18px;
+    }
+}
