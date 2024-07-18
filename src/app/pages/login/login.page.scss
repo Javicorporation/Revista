@@ -1,0 +1,134 @@
+.ion-login {
+    --ion-background-color:linear-gradient(180.31deg, #7B72DF -11.57%, rgba(53, 59, 118, 0.967456) 51.75%, rgba(32, 48, 130, 0.729167) 111.46%, rgba(51, 106, 188, 0) 140.83%);
+}
+
+.login-container{
+    --ion-background-color: transparent; 
+    padding: 20px;
+    background: var(--ion-background-color);
+    box-shadow: none;
+}
+
+.header {
+    display: block;
+}
+
+.welcome-text{
+    display: block;
+    font-size: 9vw;
+    display: block;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    color: white; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    font-family: 'SeoulHangang CB';
+}
+
+.subtext{
+    display: block;
+    padding: 4.5vw;
+    font-size: 4vw; 
+    display: block;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-family: 'SeoulHangang CB';
+    align-items: center;
+    margin: auto; 
+    color: white; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.img-culture {
+    display: block;
+    width: 29vw; 
+    height: 29vw; 
+    object-fit: cover; 
+    margin: 20px auto;
+}
+
+.input-item{
+    padding-bottom: 10px;
+}
+
+.email{
+    display: block;
+    border-radius: 15px;
+}
+
+.password{
+    display: block;
+    border-radius: 15px;
+}
+
+.form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.error-message {
+    font-size: 12px; 
+    background-color: transparent;
+    padding-bottom: 15px;
+}
+
+.remember-me-container {
+    --background: transparent;
+    --ion-item-background: transparent;
+    --color: inherit; 
+    border: none;
+}
+
+.forgot-password {
+    font-size: 12px;
+    color: #007bff;
+}
+
+.login-button {
+    margin-top: 20px; 
+    color: white; 
+    padding: 8% 0 8% 0;
+    margin-top: 25px;  
+}
+
+.login-text {
+    cursor: pointer;
+}
+
+.registro-link {
+    color: #007bff; 
+}
+
+    
+@media (min-width: 1024px) {
+    .welcome-text {
+        font-size: 3vw;
+    }
+    
+    .subtext {
+        padding: 1vw;
+        font-size: 1.5vw;
+    }
+    
+    .img-culture {
+        width: 10vw;
+        height: 10vw;
+    }
+    
+    .form {
+        max-width: 800px;
+    }
+    
+    .error-message {
+        font-size: 16px;
+    }
+    
+    .login-button {
+        padding: 1% 0;
+    }
+}
