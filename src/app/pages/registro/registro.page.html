@@ -1,13 +1,95 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>registro</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header titulo="Registro"></app-header>
+<link href="https://fonts.googleapis.com/css2?family=SeoulHangang+CB:wght@400;500;700&display=swap" rel="stylesheet">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">registro</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-register">
+  <ion-card class="register-container">
+
+    <ion-card-header class="header">
+      <ion-card-title class="welcome-text">Bienvenido</ion-card-title>
+      <ion-card-subtitle class="subtext">Cree su cuenta</ion-card-subtitle>
+      <ion-img class="img-culture" src="assets/img/science.png" alt="Cultura Ecuador"></ion-img>
+    </ion-card-header>
+
+    <ion-card-content>
+        <form class="form">
+          <!--****************NOMBRE*************************-->
+        <div class="input-item">
+          <ion-item class="email">
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input [(ngModel)]="nombre" formControlName="nombre"  type="text" class="input"></ion-input>
+          </ion-item>
+        </div>
+      
+        <ng-container *ngFor="let validation of validation_messages.nombre">
+          <ion-item-divider *ngIf="validar_form.get('nombre').hasError(validation.type) && (validar_form.get('nombre').dirty || validar_form.get('nombre').touched)">
+            <ion-text color="danger" class="ion-text-wrap">
+              {{ validation.message }}
+            </ion-text>
+          </ion-item-divider>
+        </ng-container>
+
+        <!--*******************LAST NAME*********************-->
+        <div class="input-item">
+          <ion-item class="apellido">
+            <ion-label position="floating">Apellido</ion-label>
+            <ion-input [(ngModel)]="apellido" formControlName="apellido" type="text" class="input"></ion-input>
+          </ion-item>
+        </div>
+
+        <ng-container *ngFor="let validation of validation_messages.apellido">
+          <ion-item-divider *ngIf="validar_form.get('apellido').hasError(validation.type) && (validar_form.get('apellido').dirty || validar_form.get('apellido').touched)">
+            <ion-text color="danger" class="ion-text-wrap">
+              {{ validation.message }}
+            </ion-text>
+          </ion-item-divider>
+        </ng-container>
+        
+        <!--************************EMAIL*****************************-->
+        <div class="input-item">
+          <ion-item class="email">
+            <ion-label position="floating">Email</ion-label>
+            <ion-input [(ngModel)]="email" formControlName="email" type="text" class="input"></ion-input>
+        </ion-item>
+        </div>
+        
+        <ng-container *ngFor="let validation of validation_messages.email">
+          <ion-item-divider *ngIf="validar_form.get('email').hasError(validation.type) && (validar_form.get('email').dirty || validar_form.get('email').touched)">
+            <ion-text color="danger" class="ion-text-wrap">
+              {{ validation.message }}
+            </ion-text>
+          </ion-item-divider>
+        </ng-container>
+
+        <!--**************************PASSWORD*****************************-->
+        <div class="input-item">
+          <ion-item class="password">
+            <ion-label position="floating">Password</ion-label>
+            <ion-input [type]="passType" [(ngModel)]="password" formControlName="password" class="input"></ion-input>
+            <ion-icon *ngIf="isDisabledPass" style="margin-top: auto;" (click)="showPassword()" slot="end" ></ion-icon>
+            <ion-icon *ngIf="!isDisabledPass" style="margin-top: auto;" (click)="hidePassword()" slot="end" ></ion-icon>
+          </ion-item>
+        </div>
+
+        <ng-container *ngFor="let validation of validation_messages.email">
+          <ion-item-divider *ngIf="validar_form.get('password').hasError(validation.type) && (validar_form.get('password').dirty || validar_form.get('password').touched)">
+            <ion-text color="danger" class="ion-text-wrap">
+              {{ validation.message }}
+            </ion-text>
+          </ion-item-divider>
+        </ng-container>
+          
+        <ion-text class="terminos-Condiciones">Al registrarse, acepta nuestros "Términos de uso y política de privacidad".</ion-text>
+
+        <div class="footer">
+          <ion-button expand="block" class="register-button">Registrarse</ion-button>
+
+          <ion-text class="register-text" style="border: none;">
+            ¿Ya tienes una cuenta? <ion-text routerLink="/login" class="login-link">Ingresar</ion-text>
+          </ion-text>
+        </div>
+      </form>
+
+    </ion-card-content>
+
+  </ion-card>
 </ion-content>
