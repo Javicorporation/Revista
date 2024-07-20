@@ -13,14 +13,13 @@ export class HomeadminPage implements OnInit {
   articulos: Articulo[] = [];
 
 
-  constructor(public menuCtrl: MenuController,
-    public firestoreService: FirestoreService,
-    private router: Router) { }
+  constructor(public menuCtrl: MenuController, public firestoreService: FirestoreService, private router: Router) { }
 
   ngOnInit() {
     this.traerTodosLosArticulos();
   }
 
+  //mostrar menu
   openMenu(){
     this.menuCtrl.toggle("menu1");
   }

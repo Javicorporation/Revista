@@ -4,15 +4,12 @@
   <h3 class="encabezado">Crear un articulo nuevo.</h3>
 
   <ion-item>
-    <ion-label position="floating">
-      Titulo:
-    </ion-label>
-    <ion-input [(ngModel)]="newArticulo.tituloDeArticulo" type="text" inputmode="text"></ion-input>
+    <ion-input [(ngModel)]="newArticulo.tituloDeArticulo" label="Ingresa un titulo" label-placement="floating" fill="solid" placeholder="Escriba un texto"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label>Categoría:</ion-label>
     <ion-select [(ngModel)]="newArticulo.categoria" placeholder="Selecciona una categoría">
+      <div slot="label">Categoria <ion-text color="danger">(Required)</ion-text></div>
       <ion-select-option value="ciencias">Ciencias</ion-select-option>
       <ion-select-option value="deporte">Deporte</ion-select-option>
       <ion-select-option value="tecnologia">Tecnología</ion-select-option>
@@ -20,29 +17,19 @@
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">
-      Resumen del articulo:
-    </ion-label>
-    <ion-input [(ngModel)]="newArticulo.resumenDelArticulo" type="text" inputmode="text"></ion-input>
+    <ion-input [(ngModel)]="newArticulo.resumenDelArticulo" label="Ingrese el resumen del articulo" label-placement="floating" fill="solid" placeholder="Escriba un texto"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">
-    </ion-label>
     <ion-input [(ngModel)]="newArticulo.fechaPublicacion" type="date" inputmode="date" class="custom-date-input"></ion-input>
   </ion-item>
+  
   <ion-item>
-    <ion-label position="floating">
-      Autor:
-    </ion-label>
-    <ion-input [(ngModel)]="newArticulo.autor" type="text" inputmode="text"></ion-input>
+    <ion-input [(ngModel)]="newArticulo.autor" label="Ingrese el nombre del Autor" label-placement="floating" fill="solid" placeholder="Escriba un texto"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label position="floating">
-      Información: 
-    </ion-label>
-    <ion-input [(ngModel)]="newArticulo.informacion" type="text" inputmode="text"></ion-input>
+    <ion-input [(ngModel)]="newArticulo.informacion" label="Ingrese la informacion" label-placement="floating" fill="solid" placeholder="Escriba un texto"></ion-input>
   </ion-item>
 
   <ion-item>
