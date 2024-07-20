@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, MenuController } from '@ionic/angular';
+import { AlertController, LoadingController, MenuController } from '@ionic/angular';
 import { Articulo } from 'src/app/modelsDatabase';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
@@ -27,7 +27,10 @@ export class ArticulosPage implements OnInit {
   private path= 'Articulos/'
 
   // implementaciones en el controlador
-  constructor(public menuCtrl: MenuController, public firestoreService: FirestoreService,private alertController: AlertController ) { }
+  constructor(public menuCtrl: MenuController, 
+    public firestoreService: FirestoreService,
+    private alertController: AlertController, 
+    private loadingCtrl: LoadingController ) { }
 
   ngOnInit() {
     // Implementación de los artículos en el adminhome por medio de la suscripción a firestore
@@ -53,8 +56,19 @@ export class ArticulosPage implements OnInit {
       });
       await alert.present();
     } else {
-      const path = 'Articulos/';
-      this.firestoreService.crearArticulo(this.newArticulo, this.path, this.newArticulo.id);
+
+      const loading = await this.loadingCtrl.create({ message: "jajaja hola...", duration: 6000,});
+      await loading.present();
+
+      try{
+        const path = 'Articulos/';
+        this.firestoreService.crearArticulo(this.newArticulo, this.path, this.newArticulo.id);
+      }catch(error){
+        console.error(error);
+      }finally{
+        loading.dismiss();
+      }
+      
     }
   }
 
