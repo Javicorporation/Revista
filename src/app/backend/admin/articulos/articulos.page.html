@@ -53,5 +53,11 @@
   </div>
 
 
+  <!--<img *ngIf="newImagen" [src]="newImagen">-->
+
+  <div *ngFor="let imagen of imagenesSeleccionadas">
+    <img [src]="imagen">
+  </div>
+
 
 </ion-content>

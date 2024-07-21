@@ -14,6 +14,9 @@ export class ArticulosPage implements OnInit {
   //lista de imagenes
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
   selectedImages: File[] = [];
+  imagenesSeleccionadas: string[] =[];
+
+  
 
   // articulos vacios
   newArticulo: Articulo = {
@@ -28,6 +31,7 @@ export class ArticulosPage implements OnInit {
   };
 
   private path= 'Articulos/'
+  newImagen: string | ArrayBuffer | null = null;
 
   // implementaciones en el controlador
   constructor(public menuCtrl: MenuController, 
@@ -99,15 +103,30 @@ export class ArticulosPage implements OnInit {
       foto: '',
       id: this.firestoreService.getId()
     };
+
+    this.imagenesSeleccionadas = [];
   }
 
+  // metodo escoger imagenes
   imgSeleccionadas(event: Event) {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.selectedImages = Array.from(input.files);
-      // Procesa las imágenes seleccionadas
+      this.imagenesSeleccionadas = [];
+      this.selectedImages.forEach(file => this.mostrarImgs(file))
       console.log('Imágenes seleccionadas:', this.selectedImages);
-    }
+    }  
+    this.mostrarImgs; 
+  }
+
+  // metodo mostrar
+  mostrarImgs(file: File) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      //this.newImagen = reader.result;
+      this.imagenesSeleccionadas.push(reader.result as string);
+    };
+    reader.readAsDataURL(file);
   }
 
 }
