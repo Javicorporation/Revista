@@ -1,20 +1,9 @@
-.ion-login {
+.ion-login{
     --ion-background-color:linear-gradient(180.31deg, #7B72DF -11.57%, rgba(53, 59, 118, 0.967456) 51.75%, rgba(32, 48, 130, 0.729167) 111.46%, rgba(51, 106, 188, 0) 140.83%);
 }
 
-.login-container{
-    --ion-background-color: transparent; 
-    padding: 20px;
-    background: var(--ion-background-color);
-    box-shadow: none;
-}
-
-.header {
-    display: block;
-}
-
-.welcome-text{
-    display: block;
+.welcome-text {
+    margin-top: 25px;
     font-size: 9vw;
     display: block;
     width: 100%;
@@ -22,14 +11,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
-    color: white; 
+    color: rgb(243, 236, 236); 
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
     font-family: 'SeoulHangang CB';
 }
 
-.subtext{
-    display: block;
+.subtext {
     padding: 4.5vw;
     font-size: 4vw; 
     display: block;
@@ -41,94 +28,110 @@
     align-items: center;
     margin: auto; 
     color: white; 
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
 }
 
 .img-culture {
-    display: block;
-    width: 29vw; 
-    height: 29vw; 
+    width: 45vw; 
+    height: 45vw; 
     object-fit: cover; 
-    margin: 20px auto;
+    border-radius: 50%; 
+    margin: 20px auto; 
 }
 
-.input-item{
-    padding-bottom: 10px;
-}
-
-.email{
-    display: block;
-    border-radius: 15px;
-}
-
-.password{
-    display: block;
-    border-radius: 15px;
-}
-
-.form {
-    max-width: 400px;
+.form{
+    max-width: 350px;
     margin: 0 auto;
+    display: block;
 }
 
 .error-message {
     font-size: 12px; 
-    background-color: transparent;
-    padding-bottom: 15px;
+    --ion-background-color: transparent; 
+    font-family: 'SeoulHangang CB';
 }
 
 .remember-me-container {
     --background: transparent;
     --ion-item-background: transparent;
-    --color: inherit; 
-    border: none;
 }
 
-.forgot-password {
-    font-size: 12px;
-    color: #007bff;
+.register-button {
+    display: block; 
+    margin: 20px auto; 
+    padding: 10px 20px; 
+    font-family: 'SeoulHangang CB';
 }
 
-.login-button {
-    margin-top: 20px; 
-    color: white; 
-    padding: 8% 0 8% 0;
-    margin-top: 25px;  
+.register-text{
+    font-size: 14px;
+    color: #a5afbb; 
 }
 
-.login-text {
-    cursor: pointer;
-}
-
-.registro-link {
+.registro-link{
+    font-size: 14px;
     color: #007bff; 
 }
 
-    
-@media (min-width: 1024px) {
+
+.login-button {
+    display: block; 
+    margin: 20px auto; 
+    padding: 10px 20px; 
+    font-family: 'SeoulHangang CB';
+}
+
+.login-text{
+    font-size: 14px;
+    color: #a5afbb; 
+}
+
+.register-link{
+    font-size: 14px;
+    color: #007bff; 
+    cursor: pointer;
+}
+
+ion-input {
+    margin-top: 10px;
+}
+
+@media (max-width: 320px) {
     .welcome-text {
-        font-size: 3vw;
+        font-size: 9vw; 
     }
-    
+
     .subtext {
-        padding: 1vw;
-        font-size: 1.5vw;
+        font-size: 4vw;
     }
-    
+
     .img-culture {
-        width: 10vw;
-        height: 10vw;
+        width: 35vw;
+        height: 35vw;
     }
-    
+
     .form {
-        max-width: 800px;
+        max-width: 240px; 
     }
-    
+
     .error-message {
-        font-size: 16px;
+        font-size: 9px;
     }
-    
+
+    .remember-me-container {
+        font-size: 10px;
+    }
+
     .login-button {
-        padding: 1% 0;
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .login-text {
+        font-size: 12px;
+    }
+
+    .register-link {
+        font-size: 12px;
     }
 }

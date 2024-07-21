@@ -1,20 +1,9 @@
-.ion-register {
+.ion-register{
     --ion-background-color:linear-gradient(180.31deg, #7B72DF -11.57%, rgba(53, 59, 118, 0.967456) 51.75%, rgba(32, 48, 130, 0.729167) 111.46%, rgba(51, 106, 188, 0) 140.83%);
 }
 
-.register-container{
-    --ion-background-color: transparent; 
-    padding: 20px;
-    background: var(--ion-background-color);
-    box-shadow: none;
-}
-
-.header {
-    display: block;
-}
-
-.welcome-text{
-    display: block;
+.welcome-text {
+    margin-top: 25px;
     font-size: 10vw;
     display: block;
     width: 100%;
@@ -22,15 +11,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: auto;
-    color: white; 
+    color: rgb(243, 236, 236); 
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
     font-family: 'SeoulHangang CB';
 }
 
-.subtext{
-    display: block;
-    padding: 5.5vw;
+.subtext {
+    padding: 5vw;
     font-size: 4vw; 
     display: block;
     width: 100%;
@@ -41,49 +28,27 @@
     align-items: center;
     margin: auto; 
     color: white; 
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
 }
 
 .img-culture {
-    display: block;
-    width: 33vw; 
-    height: 33vw; 
+    width: 45vw; 
+    height: 45vw; 
     object-fit: cover; 
-    margin: 20px auto;
+    border-radius: 50%; 
+    margin: 20px auto; 
 }
 
-.form {
-    max-width: 400px;
+.form{
+    max-width: 350px;
     margin: 0 auto;
-}
-
-.input-item{
-    padding-bottom: 10px;
-}
-
-.email{
     display: block;
-    border-radius: 15px;
-}
-
-.apellido{
-    display: block;
-    border-radius: 15px;
-}
-.email{
-    display: block;
-    border-radius: 15px;
-}
-
-.password{
-    display: block;
-    border-radius: 15px;
 }
 
 .error-message {
-    color: red; 
-    font-size: 12px;
-    margin-top: 5px; 
+    font-size: 12px; 
+    --ion-background-color: transparent; 
+    font-family: 'SeoulHangang CB';
 }
 
 .terminos-Condiciones {
@@ -95,24 +60,19 @@
     justify-content: center;
     font-family: 'SeoulHangang CB';
     align-items: center;
-    color: rgb(97, 97, 97); 
-    text-shadow: 2px 2px 4px rgba(219, 55, 55, 0.5); 
+    color: #96a3b3; 
 }
 
 .register-button {
     display: block; 
     margin: 20px auto; 
     padding: 10px 20px; 
-    color: #fff; 
-    border: none; 
-    border-radius: 5px; 
-    cursor: pointer; 
     font-family: 'SeoulHangang CB';
 }
 
 .register-text{
     font-size: 14px;
-    color: #7a848f; 
+    color: #a5afbb; 
 }
 
 .login-link{
@@ -121,30 +81,56 @@
     cursor: pointer;
 }
 
-.footer{
-    padding-bottom: 50px;
+ion-input {
+    margin-top: 10px;
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 320px) {
     .welcome-text {
-        font-size: 4vw;
+        font-size: 8vw;
+        margin-top: 20px;
     }
 
     .subtext {
-        padding: 1vw;
-        font-size: 1.5vw;
+        font-size: 3.5vw;
+        padding: 4vw;
     }
 
     .img-culture {
-        width: 15vw;
-        height: 15vw;
+        width: 40vw;
+        height: 40vw;
+        margin: 15px auto;
     }
 
     .form {
-        max-width: 800px;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    ion-input {
+        margin-top: 5px;
+    }
+
+    .error-message {
+        font-size: 10px;
+        margin-bottom: 8px;
+    }
+
+    .terminos-Condiciones {
+        font-size: 12px;
+        padding: 5px;
     }
 
     .register-button {
-        font-size: 18px;
+        margin: 15px auto;
+        padding: 8px 15px;
+    }
+
+    .register-text {
+        font-size: 12px;
+    }
+
+    .login-link {
+        font-size: 12px;
     }
 }

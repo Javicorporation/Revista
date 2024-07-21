@@ -9,8 +9,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class RegistroPage implements OnInit {
 
   validar_form: FormGroup;
-  errorMensage: String='';
-  isDisabledPass = true
+  errorMensaje: String='';
   passType = 'password'
   successMessage: string = '';
   nombre: string;
@@ -27,10 +26,6 @@ export class RegistroPage implements OnInit {
     'apellido': [
       {type: 'required', message: 'Se requiere apellido'}
     ],
-    /*'celular': [
-      {type: 'required', message: 'Se requiere celular del usuario'},
-      {type: 'maxlength', message: 'El número debe constar de 10 digitos'}
-    ],*/
     'email': [
       {type: 'required', message: 'Se requiere email'},
       {type: 'pattern', message: 'Ingrese un email válido'}
@@ -68,15 +63,18 @@ export class RegistroPage implements OnInit {
     })
   }
 
-  showPassword(){
-    this.isDisabledPass = false;
-    this.passType = 'text'
-    
+  onSubmit() {
+    if (this.validar_form.valid) {
+      const formData = this.validar_form.value;
+      console.log('Formulario válido', formData);
+      this.successMessage = 'Registro exitoso';
+      this.errorMensaje = '';
+    } else {
+      console.log('Formulario inválido');
+      this.successMessage = '';
+      this.errorMensaje = 'Por favor, complete todos los campos correctamente.';
+    }
   }
 
-  hidePassword(){ 
-    this.isDisabledPass = true;
-    this.passType = 'password'
-  }
 
 }
