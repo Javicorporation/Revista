@@ -11,22 +11,31 @@
 
 <ion-content [fullscreen]="true">
   <h3 class="encabezado">Articulos existentes</h3>
+
   <ion-list>
     <ion-item *ngFor="let articulo of articulos">
+
+      <!---titulo y genero que se ven en la lista-->
       <ion-label>
         <h2>Titulo: {{articulo.tituloDeArticulo}}</h2>
         <p>Genero: {{articulo.categoria}}</p>
       </ion-label>
+
       <ion-buttons slot="end" >
+
       <!--actualizar un articulo, al momento de presionarlo debe redirigir a la pagina articulo y rellenar con los datos del articulo seleccionado-->
-      <ion-button (click)="actualizarArticulo(articulo)">
+      <ion-button (click)="confirmaractualizarProducto(articulo)">
         <ion-icon slot="icon-only" name="create-sharp"></ion-icon>
       </ion-button>
+
       <!--eliminar un articulo-->
-      <ion-button (click)="eliminarProducto(articulo)">
+      <ion-button (click)="confirmarEliminarProducto(articulo)">
         <ion-icon slot="icon-only" name="trash-bin" color="danger"></ion-icon>
       </ion-button>
+
       </ion-buttons>
+
     </ion-item>
-  </ion-list>  
+  </ion-list> 
+
 </ion-content>

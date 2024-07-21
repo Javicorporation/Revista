@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 import { Articulo } from 'src/app/modelsDatabase';
 import { FirestoreService } from 'src/app/services/firestore.service';
 
@@ -13,14 +13,16 @@ export class HomeadminPage implements OnInit {
   articulos: Articulo[] = [];
 
 
-  constructor(public menuCtrl: MenuController,
-    public firestoreService: FirestoreService,
-    private router: Router) { }
+  constructor(public menuCtrl: MenuController, 
+    public firestoreService: FirestoreService, 
+    private router: Router,
+    private alertController: AlertController) { }
 
   ngOnInit() {
     this.traerTodosLosArticulos();
   }
 
+  //mostrar menu
   openMenu(){
     this.menuCtrl.toggle("menu1");
   }
@@ -43,6 +45,52 @@ export class HomeadminPage implements OnInit {
     this.router.navigate(['/articulos']);
   }
 
+  // confirmar eliminación de un artículo
+  async confirmarEliminarProducto(articulo: Articulo) {
+    const alert = await this.alertController.create({
+      header: '¿Estás seguro muchacho O_o?',
+      message: '¿Flaco stá segurisimo de que deseas eliminar este artículo O_o?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Eliminar',
+          handler: () => {
+            this.eliminarProducto(articulo);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
 
+  // confirmar eliminación de un artículo
+  async confirmaractualizarProducto(articulo: Articulo) {
+    const alert = await this.alertController.create({
+      header: '¿Estás seguro muchacho O_o?',
+      message: '¿Flaco stá segurisimo de que deseas editar este artículo, esta perfecto?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Editar',
+          handler: () => {
+            this.actualizarArticulo(articulo);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
 
 }
