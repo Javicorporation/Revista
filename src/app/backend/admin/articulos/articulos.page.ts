@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AlertController, LoadingController, MenuController } from '@ionic/angular';
 import { Articulo } from 'src/app/modelsDatabase';
 import { FirestoreService } from 'src/app/services/firestore.service';
@@ -11,6 +11,9 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class ArticulosPage implements OnInit {
   //lista de articulos
   articulos: Articulo[] = [];
+  //lista de imagenes
+  @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
+  selectedImages: File[] = [];
 
   // articulos vacios
   newArticulo: Articulo = {
@@ -96,6 +99,15 @@ export class ArticulosPage implements OnInit {
       foto: '',
       id: this.firestoreService.getId()
     };
+  }
+
+  imgSeleccionadas(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedImages = Array.from(input.files);
+      // Procesa las imágenes seleccionadas
+      console.log('Imágenes seleccionadas:', this.selectedImages);
+    }
   }
 
 }

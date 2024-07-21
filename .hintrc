@@ -13,6 +13,7 @@
           "ion-input[inputmode]"
         ]
       }
-    ]
+    ],
+    "no-inline-styles": "off"
   }
 }

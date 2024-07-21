@@ -33,16 +33,25 @@
   </ion-item>
 
   <ion-item>
+
     <ion-label>
       Agregar imágenes:
     </ion-label>
-    <ion-button fill="clear" slot="end">
-      <ion-icon name="image-outline" class="iconoImagen"></ion-icon>
-    </ion-button>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="fileInput.click()">
+        <ion-icon slot="icon-only" name="images"></ion-icon>
+      </ion-button>
+      <input #fileInput style="display: none;" type="file" accept="image/*" (change)="imgSeleccionadas($event)" multiple>
+    </ion-buttons>
+    
   </ion-item>
 
   <div class="button-container">
     <ion-button class="BotonGuardar" (click)="guardarArticulo()">Guardar</ion-button>
     <ion-button class="BotonGuardar" (click)="limpiarCampos()">Limpiar</ion-button>
   </div>
+
+
+
 </ion-content>
