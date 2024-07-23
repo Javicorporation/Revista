@@ -10,9 +10,11 @@ import { FirestoreService } from 'src/app/services/firestore.service';
   styleUrls: ['./homeadmin.page.scss'],
 })
 export class HomeadminPage implements OnInit {
+  // creacion de un arreglo de articulos vacio - esta es la que se va a iterar y se presentara en el home admin
   articulos: Articulo[] = [];
 
 
+  // en el constructor se implementan variables  como para control de menu, alertas, servicios etc
   constructor(public menuCtrl: MenuController, 
     public firestoreService: FirestoreService, 
     private router: Router,
@@ -22,11 +24,12 @@ export class HomeadminPage implements OnInit {
     this.traerTodosLosArticulos();
   }
 
-  //mostrar menu
+  // metodo que muestra el menu "menu1" esta implementado en app.component.html
   openMenu(){
     this.menuCtrl.toggle("menu1");
   }
-  // mostrar articulos
+
+  // metodo que muestra todo los articulos
   traerTodosLosArticulos(){
     this.firestoreService.obtenerLaColeccionXD<Articulo>('Articulos/').subscribe(rest => {
       this.articulos = rest;
@@ -42,24 +45,26 @@ export class HomeadminPage implements OnInit {
   //actualizar articulos
   actualizarArticulo(articulo: Articulo) {
     this.firestoreService.changeArticulo(articulo);
+    //redirige a la pestaña articulo y se rellena con los datos del articulo elegido
     this.router.navigate(['/articulos']);
   }
 
   // confirmar eliminación de un artículo
   async confirmarEliminarProducto(articulo: Articulo) {
+    // creacion de una variable constante alert
     const alert = await this.alertController.create({
       header: '¿Estás seguro muchacho O_o?',
       message: '¿Flaco stá segurisimo de que deseas eliminar este artículo O_o?',
       buttons: [
         {
-          text: 'Cancelar',
+          text: 'Cancelar',  // texto del boton cancelar
           role: 'cancel',
-          cssClass: 'secondary',
+          cssClass: 'secondary', // color
           handler: (blah) => {
             console.log('Confirm Cancel: blah');
           }
         }, {
-          text: 'Eliminar',
+          text: 'Eliminar', // texto del boton eliminar
           handler: () => {
             this.eliminarProducto(articulo);
           }
@@ -76,14 +81,15 @@ export class HomeadminPage implements OnInit {
       message: '¿Flaco stá segurisimo de que deseas editar este artículo, esta perfecto?',
       buttons: [
         {
-          text: 'Cancelar',
+          text: 'Cancelar',  // texto del boton cancelar
           role: 'cancel',
-          cssClass: 'secondary',
+          cssClass: 'secondary', // color
           handler: (blah) => {
             console.log('Confirm Cancel: blah');
           }
         }, {
-          text: 'Editar',
+          text: 'Editar',  // texto del boton editar
+          // cuando se presiona el icomo se accederia a la funcion actualizar articulo 
           handler: () => {
             this.actualizarArticulo(articulo);
           }
