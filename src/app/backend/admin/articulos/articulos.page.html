@@ -1,37 +1,48 @@
+<!-- implementacion del header creado en el app.componente.html-->
 <app-header titulo="Articulos"></app-header>
 
+<!-- contenido del html-->
 <ion-content [fullscreen]="true">
   <h3 class="encabezado">Crear un articulo nuevo.</h3>
 
+  <!-- caja de texto del titulo-->
   <ion-item>
     <ion-input [(ngModel)]="newArticulo.tituloDeArticulo" label="Ingresa un titulo" label-placement="floating" fill="solid" placeholder="Escriba un texto"></ion-input>
   </ion-item>
 
+  <!-- select de los generos-->
   <ion-item>
+                <!-- obtenemos el datos del modelo de dato-->           
     <ion-select [(ngModel)]="newArticulo.categoria" placeholder="Selecciona una categoría">
       <div slot="label">Categoria <ion-text color="danger">(Required)</ion-text></div>
-      <ion-select-option value="ciencias">Ciencias</ion-select-option>
+      <!-- as opciones a seleccionar-->
+      <ion-select-option value="ciencias">Ciencias</ion-select-option> 
       <ion-select-option value="deporte">Deporte</ion-select-option>
       <ion-select-option value="tecnologia">Tecnología</ion-select-option>
     </ion-select>
   </ion-item>
 
+  <!-- caja de texto del resumen del articulo-->
   <ion-item>
     <ion-input [(ngModel)]="newArticulo.resumenDelArticulo" label="Ingrese el resumen del articulo" label-placement="floating" fill="solid" placeholder="Escriba un texto"></ion-input>
   </ion-item>
 
+  <!-- caja de texto de la fecha de publicacion-->
   <ion-item>
     <ion-input [(ngModel)]="newArticulo.fechaPublicacion" type="date" inputmode="date" class="custom-date-input"></ion-input>
   </ion-item>
   
+  <!-- caja de texto del autor-->
   <ion-item>
     <ion-input [(ngModel)]="newArticulo.autor" label="Ingrese el nombre del Autor" label-placement="floating" fill="solid" placeholder="Escriba un texto"></ion-input>
   </ion-item>
 
+  <!-- caja de texto de informacion-->
   <ion-item>
     <ion-input [(ngModel)]="newArticulo.informacion" label="Ingrese la informacion" label-placement="floating" fill="solid" placeholder="Escriba un texto"></ion-input>
   </ion-item>
 
+  <!-- icono para agregar imagen-->
   <ion-item>
 
     <ion-label>
@@ -41,21 +52,24 @@
     <ion-buttons slot="end">
       <ion-button (click)="fileInput.click()">
         <ion-icon slot="icon-only" name="images"></ion-icon>
-      </ion-button>
-      <input #fileInput style="display: none;" type="file" accept="image/*" (change)="imgSeleccionadas($event)" multiple>
+      </ion-button>                           <!--input de tipo archivo-->
+      <input #fileInput style="display: none;" type="file" accept="image/*" (change)="imgSeleccionadas($event)" multiple> <!-- implementacion de imagenes seleccionadas-->
     </ion-buttons>
     
   </ion-item>
 
+  <!-- implementacion de los botones guardar y limpiar campos-->
   <div class="button-container">
     <ion-button class="BotonGuardar" (click)="guardarArticulo()">Guardar</ion-button>
     <ion-button class="BotonGuardar" (click)="limpiarCampos()">Limpiar</ion-button>
   </div>
 
 
+  <!-- muestra solo una imagen, pero no debe ser asi-->
   <!--<img *ngIf="newImagen" [src]="newImagen">-->
 
-  <div *ngFor="let imagen of imagenesSeleccionadas">
+  <!-- muestra muchas imagenes, pero no debe ser asi-->
+  <div *ngFor="let imagen of imagenesSeleccionadas"> <!-- iteramos las imagenes-->
     <img [src]="imagen">
   </div>
 

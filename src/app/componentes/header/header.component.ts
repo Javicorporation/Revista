@@ -6,6 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent  implements OnInit {
+  // el titulo que se asigan en el header
+  // variable String titulo
   @Input() titulo: string= ''
 
   constructor() { }

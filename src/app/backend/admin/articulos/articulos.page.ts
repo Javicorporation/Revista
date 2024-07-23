@@ -11,6 +11,7 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class ArticulosPage implements OnInit {
   //lista de articulos
   articulos: Articulo[] = [];
+
   //lista de imagenes
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
   selectedImages: File[] = [];
@@ -33,7 +34,7 @@ export class ArticulosPage implements OnInit {
   private path= 'Articulos/'
   newImagen: string | ArrayBuffer | null = null;
 
-  // implementaciones en el controlador
+  // implementaciones en el controlador de el menu, cargar y alertas
   constructor(public menuCtrl: MenuController, 
     public firestoreService: FirestoreService,
     private alertController: AlertController, 
@@ -53,10 +54,12 @@ export class ArticulosPage implements OnInit {
     this.menuCtrl.toggle("menu1");
   }
 
-  //Método guardar artículo, con la validación de ingreso de datos
+  //Método guardar artículo, con la validación de ingreso de datos en las cajas de texto que no permite guardar si todos los datos no estan completados
   async guardarArticulo() {
     if (!this.newArticulo.tituloDeArticulo || !this.newArticulo.categoria || !this.newArticulo.resumenDelArticulo || !this.newArticulo.fechaPublicacion || !this.newArticulo.autor ||!this.newArticulo.informacion){
-        const alert = await this.alertController.create({
+      
+      // creacion de una variable para la alerta de los campos vacios
+      const alert = await this.alertController.create({
         header: 'Error',
         message: 'Por favor, complete todos los campos.',
         buttons: ['OK']
@@ -64,12 +67,16 @@ export class ArticulosPage implements OnInit {
       await alert.present();
     } else {
 
+      // implementacion del loading
       const loading = await this.loadingCtrl.create({ message: "jajaja hola...", duration: 6000,});
       await loading.present();
 
+      // si todo esta bien se guarda el articulo y se muestra en el home admin
       try{
         const path = 'Articulos/';
         this.firestoreService.crearArticulo(this.newArticulo, this.path, this.newArticulo.id);
+
+        // si no muestra un error en la consola
       }catch(error){
         console.error(error);
       }finally{
@@ -109,9 +116,13 @@ export class ArticulosPage implements OnInit {
 
   // metodo escoger imagenes
   imgSeleccionadas(event: Event) {
+    // creacion de constante 
     const input = event.target as HTMLInputElement;
+    //  si la cantidad de archivos es mayor a 0
     if (input.files && input.files.length > 0) {
+      // implemetamos la variable en el array creado arriba en el inicio
       this.selectedImages = Array.from(input.files);
+      // Implementación del array de imágenes seleccionadas creada arriba también XD 
       this.imagenesSeleccionadas = [];
       this.selectedImages.forEach(file => this.mostrarImgs(file))
       console.log('Imágenes seleccionadas:', this.selectedImages);
