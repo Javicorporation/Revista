@@ -53,7 +53,7 @@
       <ion-button (click)="fileInput.click()">
         <ion-icon slot="icon-only" name="images"></ion-icon>
       </ion-button>                           <!--input de tipo archivo-->
-      <input #fileInput style="display: none;" type="file" accept="image/*" (change)="imgSeleccionadas($event)" multiple> <!-- implementacion de imagenes seleccionadas-->
+      <input #fileInput style="display: none;" type="file" accept="image/*" (change)="newImgSeleccionadas($event)" multiple> <!-- implementacion de imagenes seleccionadas-->
     </ion-buttons>
     
   </ion-item>
@@ -66,7 +66,6 @@
 
 
   <!-- muestra solo una imagen, pero no debe ser asi-->
-  <!--<img *ngIf="newImagen" [src]="newImagen">-->
 
   <!-- muestra muchas imagenes, pero no debe ser asi-->
   <div *ngFor="let imagen of imagenesSeleccionadas"> <!-- iteramos las imagenes-->

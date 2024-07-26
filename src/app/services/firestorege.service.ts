@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { finalize } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,21 +17,15 @@ export class FirestoregeService {
       const ref = this.fireStorage.ref(filePath);
       const task = ref.put(file);
 
-      /*task.snapshotChanges().subscribe({
-        complete: () => {
-          ref.getDownloadURL().subscribe(downloadUrl => {
-            resolve(downloadUrl);
-          }, error => {
-            reject(error);
+      task.snapshotChanges().pipe(
+        finalize( () => {
+          ref.getDownloadURL().subscribe(res =>{
+            const downloadURL = res;
+            resolve(downloadURL);
+            return;
           });
-        },
-        error: error => {
-          reject(error);
-        }
-      });*/
-
-
-      resolve("este es el enlace");
+        })
+      ).subscribe();
 
     });
 

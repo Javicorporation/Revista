@@ -18,8 +18,6 @@ export class ArticulosPage implements OnInit {
   selectedImages: File[] = [];
   imagenesSeleccionadas: string[] =[];
 
-  
-
   // articulos vacios
   newArticulo: Articulo = {
     tituloDeArticulo: '',
@@ -34,6 +32,7 @@ export class ArticulosPage implements OnInit {
 
   private path= 'Articulos/'
   newImagen: string | ArrayBuffer | null = null;
+  newFile = "";
 
   // implementaciones en el controlador de el menu, cargar y alertas
   constructor(public menuCtrl: MenuController, 
@@ -56,10 +55,11 @@ export class ArticulosPage implements OnInit {
     this.menuCtrl.toggle("menu1");
   }
 
+
+
   //Método guardar artículo, con la validación de ingreso de datos en las cajas de texto que no permite guardar si todos los datos no estan completados
   async guardarArticulo() {
     if (!this.newArticulo.tituloDeArticulo || !this.newArticulo.categoria || !this.newArticulo.resumenDelArticulo || !this.newArticulo.fechaPublicacion || !this.newArticulo.autor ||!this.newArticulo.informacion){
-      
       // creacion de una variable para la alerta de los campos vacios
       const alert = await this.alertController.create({
         header: 'Error',
@@ -68,7 +68,6 @@ export class ArticulosPage implements OnInit {
       });
       await alert.present();
     } else {
-
       // implementacion del loading
       const loading = await this.loadingCtrl.create({ message: "jajaja hola...", duration: 6000,});
       await loading.present();
@@ -77,7 +76,6 @@ export class ArticulosPage implements OnInit {
       try{
         const path = 'Articulos/';
         this.firestoreService.crearArticulo(this.newArticulo, this.path, this.newArticulo.id);
-
         // si no muestra un error en la consola
       }catch(error){
         console.error(error);
@@ -116,12 +114,18 @@ export class ArticulosPage implements OnInit {
     this.imagenesSeleccionadas = [];
   }
 
+
+
+
+
+
   // metodo escoger imagen a subir a storage firebase
-  async imgSeleccionadas(event: any) {
+  async newImgSeleccionadas(event: any) {
+    this.newFile = event.target.files[0];
     // creacion de constante  nombre de la carpeta a crear
     const path = 'Articulos';
     // creacion de constante  nombre del archivo a subir
-    const name = 'prueba';
+    const name = this.newArticulo.tituloDeArticulo;
     // la posicion de la imagen
     const files = event.target.files[0];
     // para la eleccion de varias imagenes
@@ -133,20 +137,40 @@ export class ArticulosPage implements OnInit {
     }*/
     // creacion de variable que instancia el servicio
     const res = await this.fireStorage.subirImagen(files, path,name);
-    console.log('recibi res de la promesa', res);
-    console.log('fin de la comunicacion');
+    this.newArticulo.foto = res;
+    console.log("esta es tu imagen", res);
     }  
     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // metodo mostrar
+  mostrarImgs(file: File) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.newImagen = reader.result;
+      this.imagenesSeleccionadas.push(reader.result as string);
+    };
+    reader.readAsDataURL(file);
+  }
   }
 
-  // metodo mostrar
-  //mostrarImgs(file: File) {
-    //const reader = new FileReader();
-    //reader.onload = () => {
-      //this.newImagen = reader.result;
-      //this.imagenesSeleccionadas.push(reader.result as string);
-    //};
-    //reader.readAsDataURL(file);
-  //}
+  
+  
 
 
