@@ -59,6 +59,25 @@ export class ArticulosPage implements OnInit {
 
   //Método guardar artículo, con la validación de ingreso de datos en las cajas de texto que no permite guardar si todos los datos no estan completados
   async guardarArticulo() {
+
+    // creacion de constante  nombre de la carpeta a crear
+    const path = 'Articulos';
+    // creacion de constante  nombre del archivo a subir
+    const name = this.newArticulo.tituloDeArticulo;
+    // la posicion de la imagen
+
+    // para la eleccion de varias imagenes
+    /*const files = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const res = await this.fireStorage.subirImagen(file, path, `${name}_${i}`);
+      console.log('Recibi res de la promesa', res);
+    }*/
+    // creacion de variable que instancia el servicio
+    const res = await this.fireStorage.subirImagen(this.newFile, path,name);
+    this.newArticulo.foto = res;
+    console.log("esta es tu imagen", res);
+
     if (!this.newArticulo.tituloDeArticulo || !this.newArticulo.categoria || !this.newArticulo.resumenDelArticulo || !this.newArticulo.fechaPublicacion || !this.newArticulo.autor ||!this.newArticulo.informacion){
       // creacion de una variable para la alerta de los campos vacios
       const alert = await this.alertController.create({
@@ -115,49 +134,26 @@ export class ArticulosPage implements OnInit {
   }
 
 
-
-
-
-
   // metodo escoger imagen a subir a storage firebase
   async newImgSeleccionadas(event: any) {
-    this.newFile = event.target.files[0];
-    // creacion de constante  nombre de la carpeta a crear
-    const path = 'Articulos';
-    // creacion de constante  nombre del archivo a subir
-    const name = this.newArticulo.tituloDeArticulo;
-    // la posicion de la imagen
-    const files = event.target.files[0];
-    // para la eleccion de varias imagenes
-    /*const files = event.target.files;
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const res = await this.fireStorage.subirImagen(file, path, `${name}_${i}`);
-      console.log('Recibi res de la promesa', res);
-    }*/
-    // creacion de variable que instancia el servicio
-    const res = await this.fireStorage.subirImagen(files, path,name);
-    this.newArticulo.foto = res;
-    console.log("esta es tu imagen", res);
+
+    // creacion de constante 
+    const input = event.target as HTMLInputElement;
+    //  si la cantidad de archivos es mayor a 0
+    if (input.files && input.files.length > 0) {
+      this.newFile = event.target.files[0];
+      // implemetamos la variable en el array creado arriba en el inicio
+      this.selectedImages = Array.from(input.files);
+      // Implementación del array de imágenes seleccionadas creada arriba también XD 
+      this.imagenesSeleccionadas = [];
+      this.selectedImages.forEach(file => this.mostrarImgs(file))
+      // para previsualizar la imagen
+      
+      //mensaje de consola
+      console.log('Imágenes seleccionadas:', this.selectedImages);
     }  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   
+  }  
 
     // metodo mostrar
   mostrarImgs(file: File) {
@@ -165,6 +161,7 @@ export class ArticulosPage implements OnInit {
     reader.onload = () => {
       this.newImagen = reader.result;
       this.imagenesSeleccionadas.push(reader.result as string);
+      this.newArticulo.foto = reader.result as string;
     };
     reader.readAsDataURL(file);
   }

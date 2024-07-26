@@ -58,19 +58,16 @@
     
   </ion-item>
 
+  <ion-item *ngIf="newArticulo.foto">
+    <img class="image" [src]="newArticulo.foto">
+  </ion-item>
+
   <!-- implementacion de los botones guardar y limpiar campos-->
   <div class="button-container">
     <ion-button class="BotonGuardar" (click)="guardarArticulo()">Guardar</ion-button>
     <ion-button class="BotonGuardar" (click)="limpiarCampos()">Limpiar</ion-button>
   </div>
-
-
-  <!-- muestra solo una imagen, pero no debe ser asi-->
-
-  <!-- muestra muchas imagenes, pero no debe ser asi-->
-  <div *ngFor="let imagen of imagenesSeleccionadas"> <!-- iteramos las imagenes-->
-    <img [src]="imagen">
-  </div>
-
-
+  <!--<div *ngFor="let imagen of imagenesSeleccionadas"> 
+        <img class="image" [src]="imagen">
+  </div>-->
 </ion-content>
