@@ -1,22 +1,45 @@
 <ion-app>
-  <ion-menu side="start" menuId="menu1" contentId="main">
-
+  <ion-menu side="start" menuId="menuHomeAdmin" contentId="main1">
     <ion-header>
       <ion-toolbar color="primary">
         <ion-title>Menu</ion-title>
       </ion-toolbar>
     </ion-header>
-
     <ion-content class="ion-padding">
       <ion-menu-toggle>
+
         <ion-item button="true" detail="true" [routerLink]="['/articulos']">
-        <ion-label>Menu</ion-label>
-        <ion-icon slot="start" name="create-sharp"></ion-icon>
-      </ion-item>
+          <ion-label>Crear Artículo</ion-label>
+          <ion-icon slot="start" name="create-sharp"></ion-icon>
+        </ion-item>
+
+        <ion-item button="true" detail="true" (click)="cerrarSesionAdmin()">
+          <ion-label>Cerrar sesión</ion-label>
+          <ion-icon slot="start" name="log-out"></ion-icon>
+        </ion-item>
+        
       </ion-menu-toggle>
     </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main1"></ion-router-outlet>
 
+  
+
+  <ion-menu side="start" menuId="menuHome" contentId="main2">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-menu-toggle>
+        <ion-item button="true" detail="true" (click)="cerrarSesionHome()">
+          <ion-label>Cerrar sesión</ion-label>
+          <ion-icon slot="start" name="log-out"></ion-icon>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-content>
   </ion-menu>
 
-  <ion-router-outlet id="main"></ion-router-outlet>
+  <ion-router-outlet id="main2"></ion-router-outlet>
 </ion-app>

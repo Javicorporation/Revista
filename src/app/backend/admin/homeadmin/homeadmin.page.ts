@@ -15,7 +15,7 @@ export class HomeadminPage implements OnInit {
 
 
   // en el constructor se implementan variables  como para control de menu, alertas, servicios etc
-  constructor(public menuCtrl: MenuController, 
+  constructor(public menuCtrl2: MenuController, 
     public firestoreService: FirestoreService, 
     private router: Router,
     private alertController: AlertController) { }
@@ -25,8 +25,9 @@ export class HomeadminPage implements OnInit {
   }
 
   // metodo que muestra el menu "menu1" esta implementado en app.component.html
-  openMenu(){
-    this.menuCtrl.toggle("menu1");
+  openMenu2(){
+    this.menuCtrl2.close('menuHomeAdmin'); // Cierra todos los menús antes de abrir el nuevo
+    this.menuCtrl2.toggle('menuHomeAdmin');
   }
 
   // metodo que muestra todo los articulos
