@@ -8,12 +8,14 @@ import { MenuController } from '@ionic/angular';
 })
 export class HomePage implements OnInit {
 
-  constructor(public menuCtrl: MenuController) { }
+  constructor(public menuCtrl1: MenuController) { }
 
   ngOnInit() {
   }
-  openMenu(){
-    this.menuCtrl.toggle("menu1");
+
+  openMenu1(){
+    this.menuCtrl1.close('menuHome') // Cierra todos los menús antes de abrir el nuevo
+    this.menuCtrl1.toggle('menuHome');
   }
 
 }
