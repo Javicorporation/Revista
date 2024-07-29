@@ -8,7 +8,7 @@
   <ion-card-subtitle class="subtext">Inicie sesión en su cuenta</ion-card-subtitle>
   <ion-img class="img-culture" src="assets/img/culture.png" alt="Cultura Ecuador"></ion-img>
 
-  <form class="form" [formGroup] = "formularioLogin">
+  <form class="form" [formGroup]="formularioLogin" (ngSubmit)="onSubmit()">
 
     <ion-input [clearInput]="true" type="email" formControlName="email" label="Email" label-placement="floating" fill="outline"></ion-input>
 
@@ -45,3 +45,53 @@
 
   </form>
 </ion-content>
+
+
+
+<!-- <app-header titulo="Login"></app-header>
+
+<link href="https://fonts.googleapis.com/css2?family=SeoulHangang+CB:wght@400;500;700&display=swap" rel="stylesheet">
+
+<ion-content class="ion-login" [fullscreen]="true">
+
+  <ion-card-title class="welcome-text">Bienvenido</ion-card-title>
+  <ion-card-subtitle class="subtext">Inicie sesión en su cuenta</ion-card-subtitle>
+  <ion-img class="img-culture" src="assets/img/culture.png" alt="Cultura Ecuador"></ion-img>
+
+  <form class="form" [formGroup] = "formularioLogin" (ngSubmit)="onSubmit()">
+
+    <ion-input [clearInput]="true" type="email" formControlName="email" label="Email" label-placement="floating" fill="outline"></ion-input>
+
+    <ng-container *ngFor="let validation of validation_messages.email">
+      <ion-item-divider class="error-message" *ngIf="formularioLogin.get('email').hasError(validation.type) && (formularioLogin.get('email').dirty || formularioLogin.get('email').touched)">
+        <ion-text color="danger" class="ion-text-wrap">
+          {{ validation.message }}
+        </ion-text>
+      </ion-item-divider>
+    </ng-container>
+
+
+
+    <ion-input [clearInput]="true" type="password" formControlName="password" label="Password" label-placement="floating" fill="outline" ></ion-input>
+
+    <ng-container *ngFor="let validation of validation_messages.password">
+      <ion-item-divider class="error-message" *ngIf="formularioLogin.get('password').hasError(validation.type) && (formularioLogin.get('password').dirty || formularioLogin.get('password').touched)">
+        <ion-text color="danger" class="ion-text-wrap">
+          {{ validation.message }}
+        </ion-text>
+      </ion-item-divider>
+    </ng-container>
+
+    <ion-item class="remember-me-container">
+      <ion-checkbox slot="start"></ion-checkbox>
+      <ion-label>Recordarme</ion-label>
+    </ion-item>
+
+    <ion-button class="login-button" color="primary" fill="outline" expand="block" >Login</ion-button>
+
+    <ion-text class="login-text">
+      Tienes una cuenta? <ion-text routerLink="/registro" class="registro-link">Registrarse</ion-text>
+    </ion-text>
+
+  </form>
+</ion-content> -->

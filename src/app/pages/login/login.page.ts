@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +22,11 @@ export class LoginPage implements OnInit {
     'auth/wrong-password': 'Contraseña incorrecta.' 
   }
 
-  constructor(public formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.formularioLogin = this.formBuilder.group({
@@ -55,6 +61,32 @@ export class LoginPage implements OnInit {
   hidePassword(){ 
     this.isDisabledPass = true;
     this.passType = 'password'
+  }
+
+  async onSubmit() {
+    if (this.formularioLogin.valid) {
+      const { email, password } = this.formularioLogin.value;
+      try {
+        const data = await this.authService.login(email, password,'Users');
+        let userRole = null;
+        
+        data.forEach(user => {
+          if (user.email === email && user.contraseña === password) {
+            userRole = user.rol;
+          }
+        });
+        
+        if (userRole == "Admin") {
+          this.router.navigate(['/homeadmin']);
+        } else if (userRole == "Cliente") {
+          this.router.navigate(['/home']);
+        }else{
+          alert('Usuario o contraseña incorrectos');
+        }
+      } catch (error) {
+        alert('Error al obtener documentos de User');
+      }
+    }
   }
 
 }
