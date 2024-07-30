@@ -56,6 +56,13 @@
         </ion-item-divider>
       </ng-container>
 
+      <!--**************************ROL**************************-->
+      <hr>
+    <ion-select formControlName="rol" label="Rol" label-placement="floating" fill="outline" placeholder="Seleccione su rol">
+      <ion-select-option value="Admin">Administrador</ion-select-option>
+      <ion-select-option value="Cliente">Cliente</ion-select-option>
+    </ion-select>
+
       <ion-text class="terminos-Condiciones">Al registrarse, acepta nuestros "Términos de uso y política de privacidad".</ion-text>
 
       <ion-button class="register-button" type="submit" [disabled]="!validar_form.valid" color="primary" fill="outline" expand="block" >Login</ion-button>

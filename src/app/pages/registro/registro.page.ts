@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-registro',
@@ -16,8 +17,9 @@ export class RegistroPage implements OnInit {
   apellido: string;
   email: string;
   password: string;
+  rol: string;
 
-  constructor(public formBuilder: FormBuilder) { }
+  constructor(public formBuilder: FormBuilder, private authService: AuthService) { }
 
   validation_messages = {
     'nombre': [
@@ -33,6 +35,9 @@ export class RegistroPage implements OnInit {
     'password': [
       { type: 'required', message: 'Se requiere contraseña.' },
       { type: 'minlength', message: 'La contraseña debe ser mayor a 5 digitos.' }
+    ],
+    'rol': [
+      { type: 'required', message: 'Se requiere un rol.' }
     ]
   }
 
@@ -60,20 +65,16 @@ export class RegistroPage implements OnInit {
         Validators.minLength(5),
         Validators.required
       ])),
+      rol: new FormControl('', Validators.compose([
+        Validators.required
+      ]))
     })
   }
 
   onSubmit() {
     if (this.validar_form.valid) {
-      const formData = this.validar_form.value;
-      console.log('Formulario válido', formData);
-      this.successMessage = 'Registro exitoso';
-      this.errorMensaje = '';
-    } else {
-      console.log('Formulario inválido');
-      this.successMessage = '';
-      this.errorMensaje = 'Por favor, complete todos los campos correctamente.';
-    }
+      this.authService.addUser(this.validar_form.value);
+    } 
   }
 
 
