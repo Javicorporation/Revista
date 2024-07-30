@@ -41,12 +41,13 @@ export class FirestoreService {
   }
 
 
+  // funcion obtener la coleccion de articulos
   obtenerLaColeccionXD<Tipo>(path: string){
     const coleccion = this.database.collection<Tipo>(path);
     return coleccion.valueChanges();
   }
   
-
+  // 
   changeArticulo(articulo: Articulo) {
     this.articuloSource.next(articulo);
   }

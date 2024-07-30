@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AlertController, LoadingController, MenuController } from '@ionic/angular';
 import { Articulo } from 'src/app/modelsDatabase';
 import { FirestoreService } from 'src/app/services/firestore.service';
+import { FirestoregeService } from 'src/app/services/firestorege.service';
 
 @Component({
   selector: 'app-articulos',
@@ -11,12 +12,11 @@ import { FirestoreService } from 'src/app/services/firestore.service';
 export class ArticulosPage implements OnInit {
   //lista de articulos
   articulos: Articulo[] = [];
+
   //lista de imagenes
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef;
   selectedImages: File[] = [];
   imagenesSeleccionadas: string[] =[];
-
-  
 
   // articulos vacios
   newArticulo: Articulo = {
@@ -32,12 +32,14 @@ export class ArticulosPage implements OnInit {
 
   private path= 'Articulos/'
   newImagen: string | ArrayBuffer | null = null;
+  newFile = "";
 
-  // implementaciones en el controlador
+  // implementaciones en el controlador de el menu, cargar y alertas
   constructor(public menuCtrl: MenuController, 
     public firestoreService: FirestoreService,
     private alertController: AlertController, 
-    private loadingCtrl: LoadingController ) { }
+    private loadingCtrl: LoadingController,
+    public fireStorage: FirestoregeService) { }
 
   ngOnInit() {
     // Implementación de los artículos en el adminhome por medio de la suscripción a firestore
@@ -53,23 +55,47 @@ export class ArticulosPage implements OnInit {
     this.menuCtrl.toggle("menu1");
   }
 
-  //Método guardar artículo, con la validación de ingreso de datos
+
+
+  //Método guardar artículo, con la validación de ingreso de datos en las cajas de texto que no permite guardar si todos los datos no estan completados
   async guardarArticulo() {
+
+    // creacion de constante  nombre de la carpeta a crear
+    const path = 'Articulos';
+    // creacion de constante  nombre del archivo a subir
+    const name = this.newArticulo.tituloDeArticulo;
+    // la posicion de la imagen
+
+    // para la eleccion de varias imagenes
+    /*const files = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      const res = await this.fireStorage.subirImagen(file, path, `${name}_${i}`);
+      console.log('Recibi res de la promesa', res);
+    }*/
+    // creacion de variable que instancia el servicio
+    const res = await this.fireStorage.subirImagen(this.newFile, path,name);
+    this.newArticulo.foto = res;
+    console.log("esta es tu imagen", res);
+
     if (!this.newArticulo.tituloDeArticulo || !this.newArticulo.categoria || !this.newArticulo.resumenDelArticulo || !this.newArticulo.fechaPublicacion || !this.newArticulo.autor ||!this.newArticulo.informacion){
-        const alert = await this.alertController.create({
+      // creacion de una variable para la alerta de los campos vacios
+      const alert = await this.alertController.create({
         header: 'Error',
         message: 'Por favor, complete todos los campos.',
         buttons: ['OK']
       });
       await alert.present();
     } else {
-
+      // implementacion del loading
       const loading = await this.loadingCtrl.create({ message: "jajaja hola...", duration: 6000,});
       await loading.present();
 
+      // si todo esta bien se guarda el articulo y se muestra en el home admin
       try{
         const path = 'Articulos/';
         this.firestoreService.crearArticulo(this.newArticulo, this.path, this.newArticulo.id);
+        // si no muestra un error en la consola
       }catch(error){
         console.error(error);
       }finally{
@@ -107,26 +133,41 @@ export class ArticulosPage implements OnInit {
     this.imagenesSeleccionadas = [];
   }
 
-  // metodo escoger imagenes
-  imgSeleccionadas(event: Event) {
+
+  // metodo escoger imagen a subir a storage firebase
+  async newImgSeleccionadas(event: any) {
+
+    // creacion de constante 
     const input = event.target as HTMLInputElement;
+    //  si la cantidad de archivos es mayor a 0
     if (input.files && input.files.length > 0) {
+      this.newFile = event.target.files[0];
+      // implemetamos la variable en el array creado arriba en el inicio
       this.selectedImages = Array.from(input.files);
+      // Implementación del array de imágenes seleccionadas creada arriba también XD 
       this.imagenesSeleccionadas = [];
       this.selectedImages.forEach(file => this.mostrarImgs(file))
+      // para previsualizar la imagen
+      
+      //mensaje de consola
       console.log('Imágenes seleccionadas:', this.selectedImages);
     }  
-    this.mostrarImgs; 
-  }
+   
+  }  
 
-  // metodo mostrar
+    // metodo mostrar
   mostrarImgs(file: File) {
     const reader = new FileReader();
     reader.onload = () => {
-      //this.newImagen = reader.result;
+      this.newImagen = reader.result;
       this.imagenesSeleccionadas.push(reader.result as string);
+      this.newArticulo.foto = reader.result as string;
     };
     reader.readAsDataURL(file);
   }
+  }
 
-}
+  
+  
+
+

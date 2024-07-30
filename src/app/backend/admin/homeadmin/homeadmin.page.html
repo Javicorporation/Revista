@@ -1,36 +1,44 @@
 <ion-header [translucent]="true">
+  
   <ion-toolbar>
+    <!--titulo-->
     <ion-title>Home Admin</ion-title>
+    <!--implementacion de boton de mostrar menu-->
     <ion-buttons slot="start">
-      <ion-button (click)="openMenu()">
+      <ion-button (click)="openMenu2()"> <!--implementacion de metodo openmenu-->
         <ion-icon slot="icon-only" name="menu-sharp"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
+
 </ion-header>
 
+<!--contenido de html-->
 <ion-content [fullscreen]="true">
   <h3 class="encabezado">Articulos existentes</h3>
 
+  <!-- lista de los articulos creados -->
   <ion-list>
+    <!-- generar los item en la lista-->
     <ion-item *ngFor="let articulo of articulos">
 
       <!---titulo y genero que se ven en la lista-->
       <ion-label>
-        <h2>Titulo: {{articulo.tituloDeArticulo}}</h2>
-        <p>Genero: {{articulo.categoria}}</p>
+        <h2>Titulo: {{articulo.tituloDeArticulo}}</h2> <!-- titulo del item-->
+        <p>Genero: {{articulo.categoria}}</p> <!-- Genero del item-->
       </ion-label>
 
+      <!-- ubicacion de los iconos item al final-->
       <ion-buttons slot="end" >
 
       <!--actualizar un articulo, al momento de presionarlo debe redirigir a la pagina articulo y rellenar con los datos del articulo seleccionado-->
-      <ion-button (click)="confirmaractualizarProducto(articulo)">
-        <ion-icon slot="icon-only" name="create-sharp"></ion-icon>
+      <ion-button (click)="confirmaractualizarProducto(articulo)">  <!-- implementacion del metodo actualizar-->
+        <ion-icon slot="icon-only" name="create-sharp"></ion-icon>  <!-- icono de editar-->
       </ion-button>
 
       <!--eliminar un articulo-->
-      <ion-button (click)="confirmarEliminarProducto(articulo)">
-        <ion-icon slot="icon-only" name="trash-bin" color="danger"></ion-icon>
+      <ion-button (click)="confirmarEliminarProducto(articulo)">   <!-- implementacion del metodo eliminar-->
+        <ion-icon slot="icon-only" name="trash-bin" color="danger"></ion-icon>  <!-- icono de eliminar, el color es danger= rojo-->
       </ion-button>
 
       </ion-buttons>
