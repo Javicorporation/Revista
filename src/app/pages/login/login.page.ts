@@ -69,18 +69,22 @@ export class LoginPage implements OnInit {
       try {
         const data = await this.authService.login(email, password,'Users');
         let userRole = null;
+        console.log(data);
         
         data.forEach(user => {
-          if (user.email === email && user.contraseña === password) {
+          if (user.email === email && user.password === password) {
             userRole = user.rol;
           }
         });
-        
+        console.log(userRole)
         if (userRole == "Admin") {
           this.router.navigate(['/homeadmin']);
-        } else if (userRole == "Cliente") {
+        }
+        
+        if (userRole == "Cliente") {
           this.router.navigate(['/home']);
-        }else{
+        }
+        if (userRole == null){
           alert('Usuario o contraseña incorrectos');
         }
       } catch (error) {
