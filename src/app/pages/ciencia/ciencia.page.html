@@ -1,7 +1,7 @@
 <app-header titulo="Ciencia"></app-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card *ngFor="let articulo of articulos">
+  <ion-card *ngFor="let articulo of articulos" (click)="openModal(articulo)">
     <img [src]="articulo.foto" alt="Imagen del artículo"/>
     <ion-card-header>
       <ion-card-title>{{ articulo.tituloDeArticulo }}</ion-card-title>

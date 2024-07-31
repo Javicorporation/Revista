@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ articulo.tituloDeArticulo }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="modal-content">
+    <h1>{{ articulo.tituloDeArticulo }}</h1>
+    <p>{{ articulo.autor }}</p>
+    <p>{{ articulo.fechaPublicacion }}</p>
+    <p>{{ articulo.resumenDelArticulo }}</p>
+    <img [src]="articulo.foto" alt="Imagen del artículo"/>
+    <p>{{ articulo.informacion }}</p>
+  </div>
+</ion-content>
