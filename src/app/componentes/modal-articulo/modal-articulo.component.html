@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ articulo.tituloDeArticulo }}</ion-title>
+    <ion-title>El Dato</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="closeModal()">
         <ion-icon name="close"></ion-icon>
@@ -10,12 +10,25 @@
 </ion-header>
 
 <ion-content>
-  <div class="modal-content">
-    <h1>{{ articulo.tituloDeArticulo }}</h1>
-    <p>{{ articulo.autor }}</p>
-    <p>{{ articulo.fechaPublicacion }}</p>
-    <p>{{ articulo.resumenDelArticulo }}</p>
-    <img [src]="articulo.foto" alt="Imagen del artículo"/>
-    <p>{{ articulo.informacion }}</p>
+  <div class="article-container">
+    <h1 class="article-title">{{ articulo.tituloDeArticulo }}</h1>
+    <div class="article-meta">
+
+      <p class="article-author">Autor:
+      <span class="article-author">{{ articulo.autor }}</span></p>
+
+      <p class="article-author">Fecha de publlicacion: 
+      <span class="article-author">{{ articulo.fechaPublicacion }}</span></p>
+
+    </div>
+    <h2 class="article-summary">resumen del articulo</h2>
+    <div class="article-content">
+      <p>{{ articulo.resumenDelArticulo }}</p>
+    </div>
+    <img class="article-image" [src]="articulo.foto" alt="Imagen del artículo"/>
+    <h2 class="article-full-info">informacion total</h2>
+    <div class="article-content">
+      <p>{{ articulo.informacion }}</p>
+    </div>
   </div>
 </ion-content>
