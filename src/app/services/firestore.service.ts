@@ -52,6 +52,12 @@ export class FirestoreService {
     this.articuloSource.next(articulo);
   }
 
+  // obtener articulo por categoria
+  obtenerArticulosPorCategoria(categoria: string) {
+    const coleccion = this.database.collection<Articulo>('Articulos', ref => ref.where('categoria', '==', categoria));
+    return coleccion.valueChanges();
+  }
+
 }
   
 

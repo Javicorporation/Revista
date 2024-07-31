@@ -166,8 +166,3 @@ export class ArticulosPage implements OnInit {
     reader.readAsDataURL(file);
   }
   }
-
-  
-  
-
-
